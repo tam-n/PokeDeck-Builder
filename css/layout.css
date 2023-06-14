@@ -64,6 +64,7 @@ i {
   display: none;
   overflow: hidden;
   background-color: #edefff;
+  flex-wrap: wrap;
 }
 
 .set-wrapper {
@@ -71,9 +72,29 @@ i {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 5px;
+}
+
+.set-wrapper > div {
+  font-family: montser, sans-serif;
+  opacity: 0.85;
 }
 
 .set {
-  height: 50px;
+  max-height: 50px;
   margin: 10px;
+}
+
+@media screen and (min-width: 600px) {
+  .set-wrapper {
+    width: calc(100% / 2);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .set-wrapper {
+    width: calc(100% / 3);
+  }
 }
