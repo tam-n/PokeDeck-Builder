@@ -4,6 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AJAX Project</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   <link rel="icon" href="images/favicon.ico">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
@@ -11,8 +20,55 @@
 </head>
 <body>
   <header>
+    <div class="row navigation-bar">
+      <div class="header" >
+        <img class="header-icon" src="images/Poké_Ball_icon.png"/>
+        <div>PokéDeck Builder</div>
+      </div>
+      <div class="menu">
+        <div>MENU</div>
+        <i class="fa-solid fa-bars fa-xl" style="color: #ffffff;"></i>
+      </div>
+    </div>
   </header>
-  <main>
+  <main class="container">
+    <div class="row center">
+      <div class="sub-header">
+        My Deck
+      </div>
+      <div class="deck column-full">
+        <div class="name-of-deck">Name of deck</div>
+        <div class="deck-image">No Cards in Deck</div>
+      </div>
+    </div>
+    <div class="row center">
+      <div class="sub-header">
+        Pokémon TCG Expansion Series
+      </div>
+      <div class="expansion-sets column-full">
+        <div class="expansion">
+          <img class="series" src="images/scarlet-violet-logo.png">
+          <button type="button" class="collapsible">View Sets</button>
+          <div class="set-list">
+            <div class="set-wrapper"></div>
+          </div>
+        </div>
+        <div class="expansion">
+          <img class="series" src="images/sword-shield-logo.png">
+          <button type="button" class="collapsible">View Sets</button>
+          <div class="set-list">
+            <div class="set-wrapper"></div>
+          </div>
+        </div>
+        <div class="expansion">
+          <img class="series" src="images/sun-moon-logo.png">
+          <button type="button" class="collapsible">View Sets</button>
+          <div class="set-list">
+            <div class="set-wrapper"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
