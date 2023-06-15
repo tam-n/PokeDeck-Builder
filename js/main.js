@@ -11,3 +11,16 @@ for (let i = 0; i < coll.length; i++) {
     }
   });
 }
+
+const $menu = document.querySelector('.menu');
+const $myLinks = document.querySelector('.my-links');
+
+$menu.addEventListener('click', function (event) {
+  if (event.target.matches('.hamburger-menu')) {
+    if ($myLinks.style.display === 'block') {
+      $myLinks.style.display = 'none';
+    } else {
+      $myLinks.style.display = 'block';
+    }
+  }
+});

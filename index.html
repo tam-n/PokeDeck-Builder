@@ -25,23 +25,33 @@
         <img class="header-icon" src="images/Poké_Ball_icon.png"/>
         <div>PokéDeck Builder</div>
       </div>
-      <div class="menu">
+      <div class="menu mobile">
         <div>MENU</div>
-        <i class="fa-solid fa-bars fa-xl" style="color: #ffffff;"></i>
+        <i class="fa-solid fa-bars fa-xl hamburger-menu" style="color: #ffffff;"></i>
       </div>
+      <div class="hidden desktop desktop-menu">
+        <div class="home-page desktop-menu-content">Home</div>
+        <div class="my-deck-page desktop-menu-content">My Deck</div>
+      </div>
+    </div>
+    <div class="my-links">
+      <a class="menu-content">Home</a>
+      <a class="menu-content">My Deck</a>
     </div>
   </header>
   <main class="container">
-    <div class="row center">
+    <div class="row center half-column deck-column">
       <div class="sub-header">
         My Deck
       </div>
       <div class="deck column-full">
         <div class="name-of-deck">Name of deck</div>
-        <div class="deck-image">No Cards in Deck</div>
+        <div class="deck-image-wrapper">
+          <div class="deck-image">No Cards in Deck</div>
+        </div>
       </div>
     </div>
-    <div class="row center">
+    <div class="row center half-column expansion-column">
       <div class="sub-header">
         Pokémon TCG Expansion Series
       </div>
