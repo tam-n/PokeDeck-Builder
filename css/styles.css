@@ -54,3 +54,18 @@
   font-family: lato, sans-serif;
   margin: 0.5rem;
 }
+
+.set:hover {
+  cursor: pointer;
+}
+
+.set-logo-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.set-logo {
+  height: 3rem;
+  margin: 1rem;
+}

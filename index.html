@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+
   <header>
     <div class="row navigation-bar">
       <div class="header" >
@@ -39,44 +40,70 @@
       <a class="menu-content">My Deck</a>
     </div>
   </header>
+
   <main class="container">
-    <div class="row center half-column deck-column">
-      <div class="sub-header">
-        My Deck
+
+    <div class="view-set hidden">
+      <div class="row half-column">
+        <div class="tabs-wrapper">
+          <div class="tab">View Set</div>
+          <div class="tab">My Deck</div>
+        </div>
+        <div class="display-card-wrapper">
+          <img class="display-collection-card" src="images/pokemon-card-backside.png">
+        </div>
       </div>
-      <div class="deck column-full">
-        <div class="name-of-deck">Name of deck</div>
-        <div class="deck-image-wrapper">
-          <div class="deck-image">No Cards in Deck</div>
+      <div class="row half-column">
+        <div class="set-logo-wrapper">
+          <img class="set-logo" src="">
+        </div>
+        <div class="card-collection">
+          <div class="card-wrapper"></div>
         </div>
       </div>
     </div>
-    <div class="row center half-column expansion-column">
-      <div class="sub-header">
-        Pokémon TCG Expansion Series
+
+    <div class="view-home">
+      <div class="row center half-column deck-column">
+        <div class="sub-header">
+          My Deck
+        </div>
+        <div class="deck column-full">
+          <div class="name-of-deck">Name of deck</div>
+          <div class="deck-image-wrapper">
+            <div class="deck-image">No Cards in Deck</div>
+          </div>
+        </div>
       </div>
-      <div class="expansion-sets column-full">
-        <div class="expansion">
-          <img class="series" src="images/scarlet-violet-logo.png">
-          <button type="button" class="collapsible">View Sets</button>
-          <div class="set-list">
-          </div>
+      <div class="row center half-column expansion-column">
+        <div class="sub-header">
+          Pokémon TCG Expansion Series
         </div>
-        <div class="expansion">
-          <img class="series" src="images/sword-shield-logo.png">
-          <button type="button" class="collapsible">View Sets</button>
-          <div class="set-list">
+        <div class="expansion-sets column-full">
+          <div class="expansion">
+            <img class="series" src="images/scarlet-violet-logo.png">
+            <button type="button" class="collapsible">View Sets</button>
+            <div class="set-list">
+            </div>
           </div>
-        </div>
-        <div class="expansion">
-          <img class="series" src="images/sun-moon-logo.png">
-          <button type="button" class="collapsible">View Sets</button>
-          <div class="set-list">
+          <div class="expansion">
+            <img class="series" src="images/sword-shield-logo.png">
+            <button type="button" class="collapsible">View Sets</button>
+            <div class="set-list">
+            </div>
+          </div>
+          <div class="expansion">
+            <img class="series" src="images/sun-moon-logo.png">
+            <button type="button" class="collapsible">View Sets</button>
+            <div class="set-list">
+            </div>
           </div>
         </div>
       </div>
     </div>
+
   </main>
+
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>

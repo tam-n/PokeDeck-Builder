@@ -4,7 +4,7 @@ const data = {
   editing: null,
   view: 'home',
   myDeck: [],
-  cardSet: [],
+  cardCollection: [],
   entryId: 0
 };
 
