@@ -17,47 +17,34 @@ cardSets.responseType = 'json';
 cardSets.addEventListener('load', function () {
   for (let i = 0; i < cardSets.response.data.length; i++) {
     if (cardSets.response.data[i].series === 'Scarlet & Violet') {
-      const $setWrapper = document.createElement('div');
-      const $img = document.createElement('img');
-      const $setName = document.createElement('div');
-      $setWrapper.className = 'set-wrapper';
-      $img.setAttribute('src', cardSets.response.data[i].images.logo);
-      $img.setAttribute('class', 'set');
-      $img.setAttribute('data-view-id', cardSets.response.data[i].id);
-      $setName.textContent = cardSets.response.data[i].name;
-      $setWrapper.appendChild($img);
-      $setWrapper.appendChild($setName);
+      const $setWrapper = createSet(i);
       $setList[0].appendChild($setWrapper);
     }
     if (cardSets.response.data[i].series === 'Sword & Shield') {
-      const $setWrapper = document.createElement('div');
-      const $img = document.createElement('img');
-      const $setName = document.createElement('div');
-      $setWrapper.className = 'set-wrapper';
-      $img.setAttribute('src', cardSets.response.data[i].images.logo);
-      $img.setAttribute('class', 'set');
-      $img.setAttribute('data-view-id', cardSets.response.data[i].id);
-      $setName.textContent = cardSets.response.data[i].name;
-      $setWrapper.appendChild($img);
-      $setWrapper.appendChild($setName);
+      const $setWrapper = createSet(i);
       $setList[1].appendChild($setWrapper);
     }
     if (cardSets.response.data[i].series === 'Sun & Moon') {
-      const $setWrapper = document.createElement('div');
-      const $img = document.createElement('img');
-      const $setName = document.createElement('div');
-      $setWrapper.className = 'set-wrapper';
-      $img.setAttribute('src', cardSets.response.data[i].images.logo);
-      $img.setAttribute('class', 'set');
-      $img.setAttribute('data-view-id', cardSets.response.data[i].id);
-      $setName.textContent = cardSets.response.data[i].name;
-      $setWrapper.appendChild($img);
-      $setWrapper.appendChild($setName);
+      const $setWrapper = createSet(i);
       $setList[2].appendChild($setWrapper);
     }
   }
 });
 cardSets.send();
+
+function createSet(index) {
+  const $setWrapper = document.createElement('div');
+  const $img = document.createElement('img');
+  const $setName = document.createElement('div');
+  $setWrapper.className = 'set-wrapper';
+  $img.setAttribute('src', cardSets.response.data[index].images.logo);
+  $img.setAttribute('class', 'set');
+  $img.setAttribute('data-view-id', cardSets.response.data[index].id);
+  $setName.textContent = cardSets.response.data[index].name;
+  $setWrapper.appendChild($img);
+  $setWrapper.appendChild($setName);
+  return $setWrapper;
+}
 
 for (let i = 0; i < coll.length; i++) {
   coll[i].addEventListener('click', function () {
