@@ -19,12 +19,10 @@ cardSets.addEventListener('load', function () {
     if (cardSets.response.data[i].series === 'Scarlet & Violet') {
       const $setWrapper = createSet(i);
       $setList[0].appendChild($setWrapper);
-    }
-    if (cardSets.response.data[i].series === 'Sword & Shield') {
+    } else if (cardSets.response.data[i].series === 'Sword & Shield') {
       const $setWrapper = createSet(i);
       $setList[1].appendChild($setWrapper);
-    }
-    if (cardSets.response.data[i].series === 'Sun & Moon') {
+    } else if (cardSets.response.data[i].series === 'Sun & Moon') {
       const $setWrapper = createSet(i);
       $setList[2].appendChild($setWrapper);
     }
@@ -49,11 +47,11 @@ function createSet(index) {
 for (let i = 0; i < coll.length; i++) {
   coll[i].addEventListener('click', function () {
     this.classList.toggle('active');
-    const content = this.nextElementSibling;
-    if (content.style.display === 'flex') {
-      content.style.display = 'none';
+    const $content = this.nextElementSibling;
+    if ($content.style.display === 'flex') {
+      $content.style.display = 'none';
     } else {
-      content.style.display = 'flex';
+      $content.style.display = 'flex';
     }
   });
 }
@@ -129,5 +127,7 @@ $header.addEventListener('click', function (event) {
 });
 
 function clearCardCollection() {
-  $cardWrapper.innerHTML = '';
+  while ($cardWrapper.firstChild) {
+    $cardWrapper.removeChild($cardWrapper.firstChild);
+  }
 }
