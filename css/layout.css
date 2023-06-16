@@ -240,4 +240,8 @@ div.display-card-column {
   .card-collection-column {
     padding-left: 50%;
   }
+
+  .my-links {
+    display: none;
+  }
 }

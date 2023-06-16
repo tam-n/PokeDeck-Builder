@@ -69,3 +69,15 @@
   height: 3rem;
   margin: 1rem;
 }
+
+.card:hover {
+  cursor: pointer;
+}
+
+.desktop-menu-content:hover {
+  cursor: pointer;
+}
+
+.collapsible:hover {
+  cursor: pointer;
+}
