@@ -9,6 +9,7 @@ div.hidden {
 .navigation-bar {
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 .header {
@@ -117,6 +118,8 @@ i {
   justify-content: center;
   align-items: center;
   margin: 0.5rem;
+  position: absolute;
+  z-index: -1;
 }
 
 .card-wrapper {
@@ -146,8 +149,12 @@ i {
 .display-card-wrapper {
   display: flex;
   justify-content: center;
-  padding: 1rem;
+  padding: 2rem;
   background-color: #edefff;
+}
+
+div.display-card-column {
+  display: fixed;
 }
 
 .display-collection-card {
@@ -201,12 +208,9 @@ i {
     height: 300px;
   }
 
-  .desktop {
-    display: flex;
-  }
-
-  .desktop-menu {
+  div.desktop-menu {
     font-size: 2rem;
+    display: flex;
   }
 
   .desktop-menu-content {
@@ -215,5 +219,25 @@ i {
 
   .mobile {
     display: none;
+  }
+
+  .tabs-wrapper {
+    display: none;
+  }
+
+  .display-card-column {
+    position: fixed;
+    right: 50%;
+    left: 0%;
+    top: 0;
+    background-color: #edefff;
+    height: 100%;
+    z-index: -1;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card-collection-column {
+    padding-left: 50%;
   }
 }
