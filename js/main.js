@@ -123,6 +123,7 @@ $cardContainer.addEventListener('click', function (event) {
     $displayCollectionCard.setAttribute('src', event.target.src);
     $displayCollectionCard.setAttribute('alt', 'displayed card');
     $displayCollectionCard.setAttribute('data-card-id', event.target.getAttribute('data-card-id'));
+    toggleAddMinusButtons();
   }
 });
 
@@ -136,6 +137,7 @@ $header.addEventListener('click', function (event) {
       $setList[i].style.display = 'none';
     }
     $displayCollectionCard.setAttribute('src', 'images/pokemon-card-backside.png');
+    toggleAddMinusButtons();
   }
 });
 
@@ -159,3 +161,11 @@ $addminus.addEventListener('click', function (event) {
     }
   }
 });
+
+function toggleAddMinusButtons() {
+  if ($displayCollectionCard.getAttribute('src') === 'images/pokemon-card-backside.png') {
+    $addminus.classList.add('hidden');
+  } else {
+    $addminus.classList.remove('hidden');
+  }
+}
