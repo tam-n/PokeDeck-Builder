@@ -72,6 +72,7 @@
 
 .card:hover {
   cursor: pointer;
+  transform: scale(1.2);
 }
 
 .desktop-menu-content:hover {
@@ -86,6 +87,14 @@
   cursor: pointer;
 }
 
+.add:active {
+  transform: translate(0, 2.5px);
+}
+
 .minus:hover {
   cursor: pointer;
+}
+
+.minus:active {
+  transform: translate(0, 2.5px);
 }
