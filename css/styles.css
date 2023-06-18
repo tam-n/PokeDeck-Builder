@@ -67,7 +67,7 @@
 
 .set-logo {
   height: 3rem;
-  margin: 1rem;
+  margin: 0.6rem 0;
 }
 
 .card:hover {
@@ -79,5 +79,13 @@
 }
 
 .collapsible:hover {
+  cursor: pointer;
+}
+
+.add:hover {
+  cursor: pointer;
+}
+
+.minus:hover {
   cursor: pointer;
 }

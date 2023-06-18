@@ -113,26 +113,38 @@ i {
   display: none;
 }
 
+.loading-screen-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.load-screen {
+  width: 20%;
+}
+
 .card-collection {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0.5rem;
-  position: absolute;
-  z-index: -1;
 }
 
-.card-wrapper {
+.card-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  width: 100%;
+}
+
+.card-wrapper {
+  width: 20%;
+  margin: 0.5rem;
 }
 
 .card {
-  width: 20%;
-  margin: 0.5rem;
+  width: 100%;
 }
 
 .tabs-wrapper {
@@ -153,8 +165,23 @@ i {
   background-color: #edefff;
 }
 
-div.display-card-column {
-  display: fixed;
+.button-column {
+  justify-content: end;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #c54029;
+  color: white;
+  height: 1.5rem;
+  width: 4rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  border: none;
 }
 
 .display-collection-card {
@@ -164,6 +191,25 @@ div.display-card-column {
 .half-column {
   display: flex;
   flex-direction: column;
+}
+
+.add-minus {
+  width: 100%;
+  justify-content: center;
+  background-color: #edefff;
+  height: 2rem;
+}
+
+.add-wrapper {
+  display: flex;
+  flex-basis: 20%;
+  justify-content: center;
+}
+
+.minus-wrapper {
+  display: flex;
+  flex-basis: 20%;
+  justify-content: center;
 }
 
 @media screen and (min-width: 600px) {
@@ -238,7 +284,13 @@ div.display-card-column {
   }
 
   .card-collection-column {
-    padding-left: 50%;
+    position: absolute;
+    top: 10%;
+    bottom: 0;
+    left: 50%;
+    right: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   .my-links {

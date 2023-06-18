@@ -8,8 +8,10 @@ const $tab = document.querySelectorAll('.tab');
 const $deckColumn = document.querySelector('.deck-column');
 const $header = document.querySelector('header');
 const $setLogo = document.querySelector('.set-logo');
-const $cardWrapper = document.querySelector('.card-wrapper');
+const $cardContainer = document.querySelector('.card-container');
 const $setList = document.querySelectorAll('.set-list');
+const $loadingScreenWrapper = document.querySelector('.loading-screen-wrapper');
+const $addminus = document.querySelector('.add-minus');
 
 const cardSets = new XMLHttpRequest();
 cardSets.open('GET', 'https://api.pokemontcg.io/v2/sets');
@@ -91,15 +93,24 @@ function renderPokemonCards(setId) {
   const pokemonCards = new XMLHttpRequest();
   pokemonCards.open('GET', 'https://api.pokemontcg.io/v2/cards?orderBy=number&q=set.id:' + setId);
   pokemonCards.responseType = 'json';
+  pokemonCards.addEventListener('loadstart', function () {
+    $loadingScreenWrapper.style.display = 'flex';
+  });
   pokemonCards.addEventListener('load', function () {
-
+    $loadingScreenWrapper.style.display = 'none';
     for (let i = 0; i < pokemonCards.response.data.length; i++) {
       data.cardCollection.push(pokemonCards.response.data[i]);
+      const $cardWrapper = document.createElement('div');
       const $card = document.createElement('img');
+      const $counter = document.createElement('div');
+      $cardWrapper.className = 'card-wrapper';
       $card.className = 'card';
+      $counter.className = 'counter';
       $card.setAttribute('data-card-id', data.cardCollection[i].id);
       $card.setAttribute('src', data.cardCollection[i].images.large);
+      $cardContainer.appendChild($cardWrapper);
       $cardWrapper.appendChild($card);
+      $cardWrapper.appendChild($counter);
     }
   });
   pokemonCards.send();
@@ -107,9 +118,11 @@ function renderPokemonCards(setId) {
 
 const $displayCollectionCard = document.querySelector('.display-collection-card');
 
-$cardWrapper.addEventListener('click', function (event) {
+$cardContainer.addEventListener('click', function (event) {
   if (event.target.matches('.card')) {
     $displayCollectionCard.setAttribute('src', event.target.src);
+    $displayCollectionCard.setAttribute('alt', 'displayed card');
+    $displayCollectionCard.setAttribute('data-card-id', event.target.getAttribute('data-card-id'));
   }
 });
 
@@ -127,7 +140,22 @@ $header.addEventListener('click', function (event) {
 });
 
 function clearCardCollection() {
-  while ($cardWrapper.firstChild) {
-    $cardWrapper.removeChild($cardWrapper.firstChild);
+  while ($cardContainer.firstChild) {
+    $cardContainer.removeChild($cardContainer.firstChild);
   }
 }
+
+$addminus.addEventListener('click', function (event) {
+  if (event.target.matches('.add')) {
+    const cardId = $displayCollectionCard.getAttribute('data-card-id');
+    const cardImg = $displayCollectionCard.getAttribute('src');
+    const obj = {};
+    if (Object.hasOwn(data.myDeck, cardId)) {
+      data.myDeck[cardId].counter++;
+    } else {
+      obj.counter = 1;
+      obj.img = cardImg;
+      data.myDeck[cardId] = obj;
+    }
+  }
+});
