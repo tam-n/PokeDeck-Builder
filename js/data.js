@@ -1,11 +1,9 @@
 /* exported data */
 
-var data = {
-  editing: null,
+let data = {
   view: 'home',
   myDeck: {},
-  cardCollection: [],
-  entryId: 0
+  cardCollection: []
 };
 
 window.addEventListener('beforeunload', function (event) {
