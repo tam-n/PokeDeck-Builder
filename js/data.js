@@ -6,12 +6,12 @@ let data = {
   cardCollection: []
 };
 
-// window.addEventListener('beforeunload', function (event) {
-//   const currentData = JSON.stringify(data);
-//   localStorage.setItem('local-storage-tcg', currentData);
-// });
+window.addEventListener('beforeunload', function (event) {
+  const currentData = JSON.stringify(data);
+  localStorage.setItem('local-storage-tcg', currentData);
+});
 
-// const previousData = localStorage.getItem('local-storage-tcg');
-// if (previousData !== null) {
-//   data = JSON.parse(previousData);
-// }
+const previousData = localStorage.getItem('local-storage-tcg');
+if (previousData !== null) {
+  data = JSON.parse(previousData);
+}
