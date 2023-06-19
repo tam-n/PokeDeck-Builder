@@ -67,11 +67,12 @@
 
 .set-logo {
   height: 3rem;
-  margin: 1rem;
+  margin: 0.6rem 0;
 }
 
 .card:hover {
   cursor: pointer;
+  transform: scale(1.2);
 }
 
 .desktop-menu-content:hover {
@@ -80,4 +81,20 @@
 
 .collapsible:hover {
   cursor: pointer;
+}
+
+.add:hover {
+  cursor: pointer;
+}
+
+.add:active {
+  transform: translate(0, 2.5px);
+}
+
+.minus:hover {
+  cursor: pointer;
+}
+
+.minus:active {
+  transform: translate(0, 2.5px);
 }
