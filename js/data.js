@@ -7,6 +7,7 @@ let data = {
 };
 
 window.addEventListener('beforeunload', function (event) {
+  data.cardCollection = [];
   const currentData = JSON.stringify(data);
   localStorage.setItem('local-storage-tcg', currentData);
 });

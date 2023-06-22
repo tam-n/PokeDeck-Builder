@@ -45,20 +45,20 @@
 
     <div class="view-set hidden">
       <div class="row half-column display-card-column">
-        <div class="tabs-wrapper">
-          <div class="tab">View Set</div>
-          <div class="tab">My Deck</div>
-        </div>
         <div class="display-card-wrapper">
           <img class="display-collection-card" src="images/pokemon-card-backside.png" alt="backside of pokémon card placeholder">
           <div class="row add-minus hidden">
             <div class="minus-wrapper">
-              <i class="fa-solid fa-minus fa-xl minus" style="color: #000000;"></i>
+              <i class="fa-solid fa-minus fa-l minus" style="color: #000000;"></i>
             </div>
             <div class="add-wrapper">
-              <i class="fa-solid fa-plus fa-xl add" style="color: #000000;"></i>
+              <i class="fa-solid fa-plus fa-  l add" style="color: #000000;"></i>
             </div>
           </div>
+        </div>
+        <div class="my-deck my-deck-mobile">My Deck</div>
+        <div class="deck-container">
+          <div class="deck-wrapper"></div>
         </div>
       </div>
       <div class="row half-column card-collection-column">
@@ -75,6 +75,10 @@
           </div>
         </div>
       </div>
+      <div class="row half-column deck-mobile-column">
+        <div class="mobile-deck-collection"></div>
+        <div class="mobile-deck-container"></div>
+      </div>
     </div>
 
     <div class="view-home">
@@ -83,7 +87,7 @@
           My Deck
         </div>
         <div class="deck column-full">
-          <div class="name-of-deck">Name of deck</div>
+          <div class="my-deck">Name of deck</div>
           <div class="deck-image-wrapper">
             <div class="deck-image">No Cards in Deck</div>
           </div>
@@ -114,6 +118,14 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="view-my-deck hidden">
+      <div class="row deck-card-display">
+        <img class="display-deck-card" src="images/pokemon-card-backside.png" alt="placeholder"/>
+      </div>
+      <div class="my-deck my-deck-desktop">My Deck</div>
+      <div class="row deck-card-collection"></div>
     </div>
 
   </main>
