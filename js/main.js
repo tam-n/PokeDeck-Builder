@@ -17,6 +17,7 @@ const $myDeckNav = document.querySelector('.my-deck-page');
 const $deckCardCollection = document.querySelector('.deck-card-collection');
 const $deckWrapper = document.querySelector('.deck-wrapper');
 const $displayDeckCard = document.querySelector('.display-deck-card');
+const $displayCollectionCard = document.querySelector('.display-collection-card');
 
 const cardSets = new XMLHttpRequest();
 cardSets.open('GET', 'https://api.pokemontcg.io/v2/sets');
@@ -77,6 +78,8 @@ $deckCardCollection.addEventListener('click', () => {
   if (event.target.matches('.desktop-deck-card')) {
     $displayDeckCard.setAttribute('src', event.target.src);
     $displayDeckCard.setAttribute('alt', 'displayed card');
+    $displayDeckCard.setAttribute('data-card-id', event.target.getAttribute('data-card-id'));
+    toggleAddMinusButtons();
   }
 });
 
@@ -123,6 +126,7 @@ function renderPokemonCards(setId) {
   });
   pokemonCards.addEventListener('load', function () {
     $loadingScreenWrapper.style.display = 'none';
+    $displayCollectionCard.removeAttribute('data-card-id');
     for (let i = 0; i < pokemonCards.response.data.length; i++) {
       data.cardCollection.push(pokemonCards.response.data[i]);
       const $cardWrapper = document.createElement('div');
@@ -141,8 +145,6 @@ function renderPokemonCards(setId) {
   pokemonCards.send();
 }
 
-const $displayCollectionCard = document.querySelector('.display-collection-card');
-
 $cardContainer.addEventListener('click', function (event) {
   if (event.target.matches('.card')) {
     $displayCollectionCard.setAttribute('src', event.target.src);
@@ -150,6 +152,14 @@ $cardContainer.addEventListener('click', function (event) {
     $displayCollectionCard.setAttribute('data-card-id', event.target.getAttribute('data-card-id'));
     toggleAddMinusButtons();
   }
+});
+
+$deckWrapper.addEventListener('click', event => {
+  if (event.target.matches('.deck-card')) {
+    $displayCollectionCard.setAttribute('src', event.target.src);
+    $displayCollectionCard.setAttribute('data-card-id', event.target.getAttribute('data-card-id'));
+  }
+  toggleAddMinusButtons();
 });
 
 $header.addEventListener('click', function (event) {
@@ -216,6 +226,7 @@ function renderDeckCard(view) {
     for (let i = 0; i < data.myDeck[key].counter; i++) {
       const $card = document.createElement('img');
       $card.setAttribute('src', data.myDeck[key].img);
+      $card.setAttribute('data-card-id', key);
       if (view === $deckWrapper) {
         $card.classList.add('deck-card');
       } else if (view === $deckCardCollection) {

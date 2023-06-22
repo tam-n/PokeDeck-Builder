@@ -99,3 +99,8 @@
 .minus:active {
   transform: translate(0, 2.5px);
 }
+
+.deck-card:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
