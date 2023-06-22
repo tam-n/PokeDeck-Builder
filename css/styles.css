@@ -50,9 +50,10 @@
   text-align: left;
 }
 
-.name-of-deck {
+.my-deck {
   font-family: lato, sans-serif;
   margin: 0.5rem;
+  font-size: 1.5rem;
 }
 
 .set:hover {
@@ -97,8 +98,4 @@
 
 .minus:active {
   transform: translate(0, 2.5px);
-}
-
-.my-deck {
-  font-size: 1.5rem;
 }

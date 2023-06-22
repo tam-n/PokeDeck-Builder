@@ -217,15 +217,48 @@ i {
 }
 
 .deck-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  display: none;
 }
 
 .deck-card {
   width: calc(100% / 5);
   margin: 0.5rem;
+}
+
+.view-my-deck {
+  display: flex;
+  flex-direction: column;
+}
+
+div.deck-card-display {
+  justify-content: center;
+  align-items: center;
+}
+
+.deck-card-display > img {
+  width: 35%;
+  padding: 1rem;
+  background-color: #edefff;
+}
+
+.desktop-deck-card {
+  width: 15%;
+  margin: 0.5rem;
+}
+
+.deck-card-collection {
+  flex-basis: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.my-deck {
+  text-align: center;
+  justify-content: center;
+}
+
+.my-deck-mobile {
+  display: none;
 }
 
 @media screen and (min-width: 600px) {
@@ -332,5 +365,48 @@ i {
   .deck-card {
     width: calc(100% / 8);
     margin: 0.5rem;
+  }
+
+  .deck-card-display {
+    background-color: #edefff;
+    flex-basis: 50%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .desktop-deck-card {
+    width: calc(100% / 12);
+    margin: 0.5rem;
+  }
+
+  .deck-card-collection {
+    padding: 0 5rem;
+  }
+
+  .view-my-deck {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .deck-card-display > img {
+    width: 15%;
+    padding: 1rem;
+  }
+
+  .my-deck {
+    text-align: center;
+  }
+
+  .deck-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .my-deck-mobile {
+    display: flex;
+    justify-content: center;
+    text-align: center;
   }
 }
