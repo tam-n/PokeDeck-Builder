@@ -233,6 +233,7 @@ i {
 div.deck-card-display {
   justify-content: center;
   align-items: center;
+  background-color: #edefff;
 }
 
 .deck-card-display > img {
