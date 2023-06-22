@@ -12,6 +12,9 @@ const $cardContainer = document.querySelector('.card-container');
 const $setList = document.querySelectorAll('.set-list');
 const $loadingScreenWrapper = document.querySelector('.loading-screen-wrapper');
 const $addminus = document.querySelector('.add-minus');
+const $deckContainer = document.querySelector('.deck-container');
+const $myDeckName = document.querySelector('.my-deck');
+const $deckImage = document.querySelector('.deck-image');
 
 const cardSets = new XMLHttpRequest();
 cardSets.open('GET', 'https://api.pokemontcg.io/v2/sets');
@@ -73,6 +76,8 @@ $set.addEventListener('click', function (event) {
     viewSwap('view-set');
     renderPokemonCards(event.target.getAttribute('data-view-id'));
     $setLogo.setAttribute('src', event.target.src);
+    clearDeck();
+    renderDeckCard();
   }
 });
 
@@ -86,6 +91,8 @@ function viewSwap(view) {
     $viewHome.classList.add('hidden');
     $deckColumn.classList.add('hidden');
     $tab[0].style.backgroundColor = '#edefff';
+    $deckContainer.classList.remove('hidden');
+    $myDeckName.classList.remove('hidden');
   }
 }
 
@@ -132,7 +139,6 @@ $header.addEventListener('click', function (event) {
     viewSwap('view-home');
     $myLinks.style.display = 'none';
     clearCardCollection();
-    data.cardCollection = [];
     for (let i = 0; i < $setList.length; i++) {
       $setList[i].style.display = 'none';
     }
@@ -145,7 +151,10 @@ function clearCardCollection() {
   while ($cardContainer.firstChild) {
     $cardContainer.removeChild($cardContainer.firstChild);
   }
+  data.cardCollection = [];
 }
+
+const deckCardIds = Object.keys(data.myDeck);
 
 $addminus.addEventListener('click', function (event) {
   if (event.target.matches('.add')) {
@@ -159,6 +168,8 @@ $addminus.addEventListener('click', function (event) {
       obj.img = cardImg;
       data.myDeck[cardId] = obj;
     }
+    clearDeck();
+    renderDeckCard();
   }
 });
 
@@ -167,5 +178,31 @@ function toggleAddMinusButtons() {
     $addminus.classList.add('hidden');
   } else {
     $addminus.classList.remove('hidden');
+  }
+}
+
+const $deckWrapper = document.querySelector('.deck-wrapper');
+
+function renderDeckCard() {
+  for (const key in data.myDeck) {
+    for (let i = 0; i < data.myDeck[key].counter; i++) {
+      const $card = document.createElement('img');
+      $card.setAttribute('src', data.myDeck[key].img);
+      $card.className = 'deck-card';
+      $deckWrapper.appendChild($card);
+    }
+  }
+}
+
+if (Object.keys(data.myDeck).length !== 0) {
+  $deckImage.textContent = '';
+  const $coverImage = document.createElement('img');
+  $coverImage.setAttribute('src', data.myDeck[deckCardIds[0]].img);
+  $deckImage.appendChild($coverImage);
+}
+
+function clearDeck() {
+  while ($deckWrapper.firstChild) {
+    $deckWrapper.removeChild($deckWrapper.firstChild);
   }
 }

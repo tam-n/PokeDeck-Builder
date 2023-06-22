@@ -16,7 +16,7 @@ div.hidden {
   flex-basis: 60%;
   display: flex;
   align-items: center;
-  margin: 10px;
+  padding: 0.5rem;
   font-size: 2rem;
 }
 
@@ -160,6 +160,7 @@ i {
 
 .display-card-wrapper {
   display: flex;
+  flex-basis: 10%;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -199,20 +200,32 @@ i {
   width: 100%;
   justify-content: center;
   background-color: #edefff;
-  height: 2rem;
-  margin-top: 1.5rem;
+  height: 1rem;
+  margin: 0.5rem;
 }
 
 .add-wrapper {
   display: flex;
-  flex-basis: 30%;
+  width: 8rem;
   justify-content: center;
 }
 
 .minus-wrapper {
   display: flex;
-  flex-basis: 30%;
+  width: 8rem;
   justify-content: center;
+}
+
+.deck-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.deck-card {
+  width: calc(100% / 5);
+  margin: 0.5rem;
 }
 
 @media screen and (min-width: 600px) {
@@ -274,7 +287,12 @@ i {
     display: none;
   }
 
+  .display-collection-card {
+    width: 220px;
+  }
+
   .display-card-column {
+    display: flex;
     position: fixed;
     right: 50%;
     left: 0%;
@@ -298,5 +316,21 @@ i {
 
   .my-links {
     display: none;
+  }
+
+  .deck-container {
+    width: 80%;
+    height: 30%;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .display-card-wrapper {
+    padding: 0.5rem;
+  }
+
+  .deck-card {
+    width: calc(100% / 8);
+    margin: 0.5rem;
   }
 }
