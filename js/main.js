@@ -271,3 +271,15 @@ function toggleNoCards() {
     }
   }
 }
+
+// Have to disable linter for this line because we are technically using this
+// function in index.html
+// eslint-disable-next-line no-unused-vars
+function deleteAll() {
+  if (confirm('Delete all cards?') === true) {
+    clearDeck($deckWrapper);
+    clearDeck($deckCardCollection);
+    data.myDeck = {};
+    toggleNoCards();
+  }
+}
