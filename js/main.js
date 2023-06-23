@@ -11,13 +11,14 @@ const $cardContainer = document.querySelector('.card-container');
 const $setList = document.querySelectorAll('.set-list');
 const $loadingScreenWrapper = document.querySelector('.loading-screen-wrapper');
 const $addminus = document.querySelector('.add-minus');
-const $deckImage = document.querySelector('.deck-image');
 const $viewMyDeck = document.querySelector('.view-my-deck');
 const $myDeckNav = document.querySelector('.my-deck-page');
 const $deckCardCollection = document.querySelector('.deck-card-collection');
 const $deckWrapper = document.querySelector('.deck-wrapper');
 const $displayDeckCard = document.querySelector('.display-deck-card');
 const $displayCollectionCard = document.querySelector('.display-collection-card');
+const $noCards = document.querySelectorAll('.no-cards');
+const $deckImageCover = document.querySelector('.deck-image-cover');
 
 const cardSets = new XMLHttpRequest();
 cardSets.open('GET', 'https://api.pokemontcg.io/v2/sets');
@@ -37,6 +38,17 @@ cardSets.addEventListener('load', function () {
   }
 });
 cardSets.send();
+
+function renderCover() {
+  const deckCardIds = Object.keys(data.myDeck);
+  if (Object.keys(data.myDeck).length !== 0) {
+    $deckImageCover.setAttribute('src', data.myDeck[deckCardIds[0]].img);
+  } else {
+    $deckImageCover.setAttribute('src', '/images/pokemon-card-backside.png');
+  }
+  toggleNoCards();
+}
+renderCover();
 
 function createSet(index) {
   const $setWrapper = document.createElement('div');
@@ -115,6 +127,7 @@ $myDeckNav.addEventListener('click', () => {
   viewSwap('view-my-deck');
   clearDeck($deckCardCollection);
   renderDeckCard($deckCardCollection);
+  $displayDeckCard.setAttribute('src', 'images/pokemon-card-backside.png');
 });
 
 function renderPokemonCards(setId) {
@@ -188,9 +201,9 @@ function clearCardCollection() {
 }
 
 $addminus.addEventListener('click', function (event) {
+  const cardId = $displayCollectionCard.getAttribute('data-card-id');
+  const cardImg = $displayCollectionCard.getAttribute('src');
   if (event.target.matches('.add')) {
-    const cardId = $displayCollectionCard.getAttribute('data-card-id');
-    const cardImg = $displayCollectionCard.getAttribute('src');
     const obj = {};
     if (Object.hasOwn(data.myDeck, cardId)) {
       data.myDeck[cardId].counter++;
@@ -199,19 +212,18 @@ $addminus.addEventListener('click', function (event) {
       obj.img = cardImg;
       data.myDeck[cardId] = obj;
     }
-    clearDeck($deckWrapper);
-    renderDeckCard($deckWrapper);
+  } else if (event.target.matches('.minus')) {
+    if (Object.hasOwn(data.myDeck, cardId)) {
+      data.myDeck[cardId].counter--;
+      if (data.myDeck[cardId].counter === 0) {
+        delete data.myDeck[cardId];
+      }
+    }
   }
-  const deckCardIds = Object.keys(data.myDeck);
-  if (Object.keys(data.myDeck).length !== 0) {
-    $deckImage.textContent = '';
-    const $coverImage = document.createElement('img');
-    $coverImage.setAttribute('src', data.myDeck[deckCardIds[0]].img);
-    $deckImage.appendChild($coverImage);
-  }
+  clearDeck($deckWrapper);
+  renderDeckCard($deckWrapper);
+  renderCover();
 });
-
-const deckCardIds = Object.keys(data.myDeck);
 
 function toggleAddMinusButtons() {
   if ($displayCollectionCard.getAttribute('src') === 'images/pokemon-card-backside.png') {
@@ -235,6 +247,7 @@ function renderDeckCard(view) {
       view.appendChild($card);
     }
   }
+  toggleNoCards();
 }
 
 function clearDeck(dom) {
@@ -243,9 +256,16 @@ function clearDeck(dom) {
   }
 }
 
-if (Object.keys(data.myDeck).length !== 0) {
-  $deckImage.textContent = '';
-  const $coverImage = document.createElement('img');
-  $coverImage.setAttribute('src', data.myDeck[deckCardIds[0]].img);
-  $deckImage.appendChild($coverImage);
+function toggleNoCards() {
+  if (Object.keys(data.myDeck).length === 0) {
+    for (let i = 0; i < $noCards.length; i++) {
+      $noCards[i].style.display = 'flex';
+      $deckImageCover.style.display = 'none';
+    }
+  } else {
+    for (let i = 0; i < $noCards.length; i++) {
+      $noCards[i].style.display = 'none';
+      $deckImageCover.style.display = 'flex';
+    }
+  }
 }
