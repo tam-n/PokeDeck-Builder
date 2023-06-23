@@ -102,5 +102,10 @@
 
 .deck-card:hover {
   cursor: pointer;
-  transform: scale(1.1);
+  transform: scale(1.2);
+}
+
+.desktop-deck-card:hover {
+  cursor: pointer;
+  transform: scale(1.2);
 }

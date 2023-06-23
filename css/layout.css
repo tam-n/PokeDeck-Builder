@@ -247,6 +247,11 @@ div.deck-card-display {
   margin: 0.5rem;
 }
 
+.deck-image {
+  align-items: center;
+  justify-content: center;
+}
+
 .deck-card-collection {
   flex-basis: 100%;
   flex-wrap: wrap;
@@ -259,6 +264,21 @@ div.deck-card-display {
 }
 
 .my-deck-mobile {
+  display: none;
+}
+
+.no-cards {
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  flex-basis: 100%;
+}
+
+.deck-container {
+  display: none;
+}
+
+.deck-image-cover {
   display: none;
 }
 
@@ -322,7 +342,7 @@ div.deck-card-display {
   }
 
   .display-collection-card {
-    width: 220px;
+    width: 30%;
   }
 
   .display-card-column {
@@ -353,6 +373,7 @@ div.deck-card-display {
   }
 
   .deck-container {
+    display: flex;
     width: 80%;
     height: 30%;
     overflow-y: auto;
