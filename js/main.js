@@ -45,6 +45,7 @@ function renderCover() {
     $deckImageCover.setAttribute('src', data.myDeck[deckCardIds[0]].img);
   } else {
     $deckImageCover.setAttribute('src', '/images/pokemon-card-backside.png');
+    $deckImageCover.setAttribute('alt', 'placeholder');
   }
   toggleNoCards();
 }
@@ -128,6 +129,7 @@ $myDeckNav.addEventListener('click', () => {
   clearDeck($deckCardCollection);
   renderDeckCard($deckCardCollection);
   $displayDeckCard.setAttribute('src', 'images/pokemon-card-backside.png');
+  $displayDeckCard.setAttribute('alt', 'placeholdera');
 });
 
 function renderPokemonCards(setId) {
